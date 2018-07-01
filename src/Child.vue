@@ -9,12 +9,12 @@
 
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  computed: {
-    childCounter() {
-      return this.$store.getters.getCounter;
-    }
-  },
+  computed: mapGetters({
+    childCounter : 'getCounter'
+  }),
 }
 </script>
 

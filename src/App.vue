@@ -12,6 +12,7 @@
 
 <script>
 import Child from './Child.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   // action
@@ -24,11 +25,9 @@ export default {
       this.$store.state.counter--;
     },
   },
-  computed: {
-    parentCounter() {
-      return this.$store.getters.getCounter;
-    }
-  },
+  computed: mapGetters({
+    parentCounter : 'getCounter'
+  }),
   components: {
     // Child 컴포넌트를 하위 컴포넌트로 등록
     'child': Child
