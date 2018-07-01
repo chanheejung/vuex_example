@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  Parent counter : {{ parentCounter }} <br>
+  Parent counter : {{ getCounter }} <br>
   <button @click="addCounter">+</button>
   <button @click="subCounter">-</button>
 
@@ -25,9 +25,11 @@ export default {
       this.$store.state.counter--;
     },
   },
-  computed: mapGetters({
-    parentCounter : 'getCounter'
-  }),
+  computed: {
+    ...mapGetters([
+      'getCounter'
+    ]),
+  },
   components: {
     // Child 컴포넌트를 하위 컴포넌트로 등록
     'child': Child
