@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  Parent counter : {{ this.$store.state.counter }} <br>
+  Parent counter : {{ parentCounter }} <br>
   <button @click="addCounter">+</button>
   <button @click="subCounter">-</button>
 
@@ -8,6 +8,7 @@
   <child></child>
 </div>
 </template>
+
 
 <script>
 import Child from './Child.vue'
@@ -21,6 +22,11 @@ export default {
     },
     subCounter() {
       this.$store.state.counter--;
+    },
+  },
+  computed: {
+    parentCounter() {
+      return this.$store.state.counter;
     }
   },
   components: {
@@ -30,6 +36,6 @@ export default {
 }
 </script>
 
-<style>
 
+<style>
 </style>
