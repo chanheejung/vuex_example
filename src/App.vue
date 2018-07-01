@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     parentCounter() {
-      return this.$store.state.counter;
+      return this.$store.getters.getCounter;
     }
   },
   components: {

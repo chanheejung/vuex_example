@@ -12,7 +12,7 @@
 export default {
   computed: {
     childCounter() {
-      return this.$store.state.counter;
+      return this.$store.getters.getCounter;
     }
   },
 }
