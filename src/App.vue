@@ -19,10 +19,10 @@ export default {
   methods: {
     // 이벤트 추가
     addCounter() {
-      this.$store.state.counter++;
+      this.$store.commit('addCounter');
     },
     subCounter() {
-      this.$store.state.counter--;
+      this.$store.commit('subCounter');
     },
   },
   computed: {
