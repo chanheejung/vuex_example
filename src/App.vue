@@ -1,8 +1,8 @@
 <template>
   <div id="app">
   Parent counter : {{ getCounter }} <br>
-  <button @click="addCounter">+</button>
-  <button @click="subCounter">-</button>
+  <button @click="addCounter(getCounter)">+</button>
+  <button @click="subCounter(getObjectValue())">-</button>
 
   <!-- Child 컴포넌트를 등록하고 counter 데이터 속성을 props 로 전달한다. -->
   <child></child>
@@ -13,22 +13,29 @@
 <script>
 import Child from './Child.vue'
 import { mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
+
   // action
   methods: {
     // 이벤트 추가
-    addCounter() {
-      this.$store.commit('addCounter', 10); // 상수 10 인자로 전달
-    },
-    subCounter() {
-      this.$store.commit('subCounter'
-        , {  // 객체를 인자로 전달
-            value: 10,
-            arr: ["a", "b", "c"]
-          }
-      );
-    },
+    ...mapMutations([
+      // Vuex 의 Mutations 메서드 명과 App.vue 메서드 명이 동일할 때 [] 사용
+      'addCounter'
+    ]),
+    ...mapMutations({
+      // Vuex 의 Mutations 메서드 명과 App.vue 메서드 명을 다르게 매칭할 때 {} 사용
+      // 앞 subCounter 는 해당 컴포넌트의 메서드를, 뒤 subCounter 는 Vuex 의 Mutations 를 의미
+      subCounter: 'subCounter'
+    }),
+    getObjectValue: function () {
+      var obj = {  // 객체를 인자로 전달
+        value: 10,
+        arr: ["a", "b", "c"]
+      }
+      return obj;
+    }
   },
   computed: {
     ...mapGetters([
