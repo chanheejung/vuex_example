@@ -16,9 +16,11 @@ export const store = new Vuex.Store({
   },
   mutations: {
     addCounter: function (state, payload) {
+      console.log("parameter is" + payload);
       return state.counter++;
     },
     subCounter: function (state, payload) {
+      console.log("parameter is " + payload.value + " & " + payload.arr);
       return state.counter--;
     }
   }

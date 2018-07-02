@@ -19,10 +19,15 @@ export default {
   methods: {
     // 이벤트 추가
     addCounter() {
-      this.$store.commit('addCounter');
+      this.$store.commit('addCounter', 10); // 상수 10 인자로 전달
     },
     subCounter() {
-      this.$store.commit('subCounter');
+      this.$store.commit('subCounter'
+        , {  // 객체를 인자로 전달
+            value: 10,
+            arr: ["a", "b", "c"]
+          }
+      );
     },
   },
   computed: {
