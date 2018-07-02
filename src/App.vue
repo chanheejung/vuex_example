@@ -23,12 +23,8 @@ export default {
     ...mapMutations([
       // Vuex 의 Mutations 메서드 명과 App.vue 메서드 명이 동일할 때 [] 사용
       'addCounter'
+      , 'subCounter'
     ]),
-    ...mapMutations({
-      // Vuex 의 Mutations 메서드 명과 App.vue 메서드 명을 다르게 매칭할 때 {} 사용
-      // 앞 subCounter 는 해당 컴포넌트의 메서드를, 뒤 subCounter 는 Vuex 의 Mutations 를 의미
-      subCounter: 'subCounter'
-    }),
     getObjectValue: function () {
       var obj = {  // 객체를 인자로 전달
         value: 10,
